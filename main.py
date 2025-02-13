@@ -25,10 +25,12 @@ if csv_file:
     csv_path = f"./uploaded_files/{csv_file.name}"
     with open(csv_path, 'wb') as f:
         f.write(csv_file.getbuffer())
-    helper.create_db(csv_path, csv_file.name.strip(".csv")[0])
+    helper.create_db(csv_path, csv_file.name.strip(".csv"))
     st.sidebar.success("Data added to DB Successfully!!!")
+    print(f"Current Table Info in RDB:\n{db.table_info}")
 
 query = st.text_input("Question: ")
 if query:
     response = helper.generate(llm, db, query)
+    st.subheader("Answer:")
     st.write(response)
