@@ -8,6 +8,23 @@ Relational Database GPT is an AI-powered system that takes user queries in natur
 - ⚡ Executes SQL queries on a relational database.
 - 🖥️ Provides a user-friendly interface with Streamlit.
 - 📂 Supports inserting CSV data into the database.
+- 🤖 Implemented dynamic **Few-Shot Prompting** to improve SQL query generation accuracy.
+
+## 🔬 What is Few-Shot Prompting?
+
+Few-Shot Prompting is a technique in which an AI model is provided with a small set of relevant examples to guide its response generation. Unlike zero-shot prompting (where the model generates answers without examples) or fine-tuning (which requires extensive training), few-shot prompting balances flexibility and accuracy, ensuring the LLM generates more precise answers.
+
+I have enhanced few-shot prompting by dynamically selecting the most relevant examples, further improving accuracy.
+
+### How Few-Shot Prompting Improves SQL Query Accuracy:
+- Vector Database Creation: A set of past queries and their corresponding SQL statements are embedded and stored in a vector database (using ChromaDB).
+- Dynamic Example Selection: When a new user query is received, the system retrieves the two most similar examples from the vector database.
+- Prompt Enhancement: These examples are included in the prompt to guide the LLM in generating a more accurate SQL query.
+- Execution & Refinement: The generated SQL query is executed on the RDB, and the response is further formatted for clarity.
+
+By leveraging contextual examples, the model can generate syntactically correct and contextually relevant SQL queries, significantly reducing errors and improving the quality of the results. 
+
+Note: Makesure to add the question and the correct SQL query to fewshots file if the LLM still generates a wrong SQL query to your question so that it will become an example for the future searches.
 
 ## 🛠️ Installation Guidelines
 Follow these steps to set up the News Research Tool:
@@ -46,5 +63,6 @@ Follow these steps to set up the News Research Tool:
 ## 🛠️ Tech Stack
 - **Frontend:** 🎨 Streamlit
 - **LLM:** 🤖 Google Generative AI
-- **Database:** 🗄️ SQLite
+- **Relational Database:** 🗄️ SQLite
+- **Vector Database:** 🔍 ChromaDB
 - **Libraries:** 🏗️ LangChain, Pandas
