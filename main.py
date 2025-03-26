@@ -8,7 +8,6 @@ from dotenv import load_dotenv
 from langchain_community.utilities import SQLDatabase
 from langchain_google_genai import GoogleGenerativeAI
 from fastapi.responses import JSONResponse
-
 # from langchain_community.llms import Ollama
 import helper
 from fastapi import FastAPI, Request
