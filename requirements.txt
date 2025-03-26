@@ -6,3 +6,5 @@ pandas
 streamlit
 chromadb
 sentence-transformers
+fastapi
+uvicorn
